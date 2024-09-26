@@ -13,3 +13,7 @@ DynamicObjectAPI is a backend system that stores various objects (like products,
 ### 2. CRUD Operations
 - Unified API Interface: A single interface manages all Create, Read, Update, and Delete operations for various object types. This API can accept dynamic fields based on the object type, offering a uniform way to manage different objects.
 - CRUD Functionalities:
+    - Create: Adds new records for dynamic objects with varying structures.
+    - Read: Retrieves data based on object type and ID, with support for optional filters (e.g., fetching all orders placed by a specific customer).
+    - Update: Modifies existing records, adapting to the dynamic structure of each object.
+    - Delete: Removes objects and, if applicable, their related sub-objects.
