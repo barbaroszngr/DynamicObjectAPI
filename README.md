@@ -7,3 +7,5 @@ DynamicObjectAPI is a backend system designed to store all objects (such as prod
 ## Key Features 
 
 ### 1. Dynamic Object Creation
+- Users can create new objects (e.g., orders and order products) and fields via API requests.
+- The system stores soft objects in a central table, eliminating the need for physical table creation.
