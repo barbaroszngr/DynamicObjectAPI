@@ -17,3 +17,40 @@ DynamicObjectAPI is a backend system that stores various objects (like products,
     - Read: Retrieves data based on object type and ID, with support for optional filters (e.g., fetching all orders placed by a specific customer).
     - Update: Modifies existing records, adapting to the dynamic structure of each object.
     - Delete: Removes objects and, if applicable, their related sub-objects.
+
+### 3. Transaction Management
+- Atomic Transactions: The system manages the creation of master objects (e.g., an order) along with their sub-objects (e.g., order products) in a single transaction. This approach ensures that either all objects are created successfully, or none are created if an error occurs, maintaining data consistency.
+- Complex Transactions: Supports multi-object transactions, allowing multiple related objects to be created or updated together within a single request.
+
+### 4. Error Handling
+- Error Management: Handles errors such as invalid object structures, missing fields, database connection issues, and validation failures. The API provides clear and meaningful error messages to the consumer, helping them understand the reasons for any failures.
+
+### 5. Dynamic Data Validation
+- Context-Sensitive Validation: Validates required fields dynamically based on the object type. For example, an order requires a customer ID and at least one product, while a product requires a name and price. The validation logic is adaptable and context-sensitive, ensuring data integrity.
+- Custom Validation Rules: Specific rules are enforced per object type, which can be easily extended or modified based on business needs.
+
+## Technology Stack
+- .NET 6 Web API: The backend system is built using .NET 6, providing modern, scalable, and performant API services.
+- PostgreSQL: The database is managed by PostgreSQL, offering strong support for handling dynamic data structures.
+- Entity Framework Core: EF Core is used as the Object-Relational Mapper (ORM) to handle database operations efficiently.
+
+## Project Structure
+The project is organized into modular layers to ensure maintainability, scalability, and reduce dependencies between components. This approach follows best practices, allowing for easier updates, testing, and future enhancements while keeping the codebase clean and manageable.
+
+### DynamicObjectAPI.API
+- Controllers: Handle incoming HTTP requests, routing them to the appropriate services for processing.
+- Middlewares: Implement custom middleware for processing requests and responses, including error handling and validation.
+
+### DynamicObjectAPI.Common
+- DTOs: Data Transfer Objects are used for standardizing API requests and responses.
+- Exceptions: Custom exceptions are defined for handling specific error scenarios within the API.
+- Validations: Dynamic validation logic is applied for different object types, ensuring that each request meets the required criteria.
+
+### DynamicObjectAPI.Data
+- Repositories and Context: This layer is responsible for managing all database-related operations, including context setup, migrations, and data access. It uses the generic repository pattern, which defines standard CRUD operations for dynamic objects and handles data persistence efficiently. By centralizing all database interactions within this layer, dependencies on the database are minimized for other modules, enhancing maintainability. The context object is configured here, along with migrations to manage schema changes. The repository pattern ensures that all interactions with the database are streamlined and consistent, reducing the direct dependency of other modules on the database.
+
+
+
+
+
+
