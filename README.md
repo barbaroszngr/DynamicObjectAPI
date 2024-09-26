@@ -1,4 +1,4 @@
-# DynamicObject
+# DynamicObjectAPI
 
 ## Overview
 
