@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DynamicObjectAPI.Common.Exceptions
 {
     public class ValidationException : Exception
     {
-        public ValidationException(string message) : base(message)
+        public IList<string> Errors { get; }
+
+        public ValidationException(IList<string> errors)
+            : base("One or more validation errors occurred.")
+        {
+            Errors = errors ?? new List<string>();
+        }
+
+        public ValidationException(string error)
+            : this(new List<string> { error })
         {
         }
     }

@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DynamicObjectAPI.Core\DynamicObjectAPI.Domain.csproj" />
-    <ProjectReference Include="..\DynamicObjectAPI.Data\DynamicObjectAPI.Data.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 </Project>
