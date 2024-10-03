@@ -30,15 +30,7 @@ namespace DynamicObjectAPI.Data
 
             modelBuilder.Entity<Customer>(entity =>
             {
-                entity.HasMany(c => c.Invoices)
-                    .WithOne(i => i.Customer)
-                    .HasForeignKey(i => i.CustomerId)
-                    .OnDelete(DeleteBehavior.Cascade);
-
-                entity.HasMany(c => c.Orders)
-                    .WithOne(o => o.Customer)
-                    .HasForeignKey(o => o.CustomerId)
-                    .OnDelete(DeleteBehavior.Cascade);
+                
             });
 
             modelBuilder.Entity<Invoice>(entity =>

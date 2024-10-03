@@ -20,11 +20,15 @@ namespace DynamicObjectAPI.Services.Validators
                 .NotEmpty().WithMessage("Customer ID is required")
                 .GreaterThan(0).WithMessage("Customer ID must be greater than 0");
 
-            When(x => x["InvoiceLines"] != null && x["InvoiceLines"].Type == JTokenType.Array, () => {
-                RuleFor(x => ((JArray)x["InvoiceLines"]))
-                    .NotEmpty().WithMessage("Invoice must have at least one line item");
+            When(x => x["InvoiceLines"] != null && x["InvoiceLines"].Type == JTokenType.Array, () =>
+            {
+                RuleFor(x => x["InvoiceLines"])
+                    .Must(x => x is JArray && x.Any())
+                    .WithMessage("Invoice must have at least one line item");
+
                 RuleForEach(x => ((JArray)x["InvoiceLines"]).Cast<JObject>())
-                    .SetValidator(new InvoiceLineValidator());
+                    .SetValidator(new InvoiceLineValidator())
+                    .OverridePropertyName("InvoiceLines");
             });
         }
 

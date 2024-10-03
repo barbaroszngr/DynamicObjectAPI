@@ -15,9 +15,8 @@ namespace DynamicObjectAPI.Services.Validators
                 .NotEmpty().WithMessage("Product ID is required")
                 .GreaterThan(0).WithMessage("Product ID must be greater than 0");
 
-            RuleFor(x => (int?)x["OrderId"])
-                .NotEmpty().WithMessage("Order ID is required")
-                .GreaterThan(0).WithMessage("Order ID must be greater than 0");
+            
         }
     }
+
 }

@@ -17,7 +17,8 @@ namespace DynamicObjectAPI.Domain.Entities
         [EmailAddress]
         [MaxLength(255)]
         public string Email { get; set; } = string.Empty;
-        public ICollection<Order> Orders { get; set; } = new List<Order>();
-        public ICollection<Invoice> Invoices { get; set; } = new List<Invoice>();
+
+        
     }
+
 }
